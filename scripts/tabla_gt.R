@@ -4,7 +4,7 @@ source("R/helper.R")
 
 
 # Crear la tabla gt
-gt_tbl <- spain_df_final %>%
+spain_df_final %>%
   filter(pts > 2) %>%
   mutate(
     name = word(jug, 1),
