@@ -8,28 +8,19 @@ spain_players <-
 show_col_types = FALSE
   ) %>%
   mutate(Player = gsub("\\s+", " ", Player),
-         Player = ifelse( Player== "Ruben Dominguez", "Rubén Dominguez", Player
+         Player = ifelse( Player == "Ruben Dominguez", "Rubén Dominguez", Player
+        )
         ) %>%
   pull(Player)
-
-spain_players_games <-
-  read_csv(
-   "https://raw.githubusercontent.com/IvoVillanueva/NCAA-ANALISIS/refs/heads/main/data/spain_players.csv",
-show_col_types = FALSE
-  ) %>%
-  mutate(Player = gsub("\\s+", " ", Player),
-         Player = ifelse( Player== "Ruben Dominguez", "Rubén Dominguez", Player) %>%
-  select(Player, gm = GP)
-
 
 # Filtrar y resumir los datos de los jugadores españoles
 spain_df <- players_all %>%
   filter(athlete_display_name %in% spain_players) %>%
   summarise(
+    gm = sum(ifelse(!did_not_play, 1, 0), na.rm = TRUE),
     across(minutes:points, ~ round(mean(.x, na.rm = TRUE), 1)),
     .by = athlete_display_name
   ) %>%
-  drop_na() %>%
   left_join(
     spain_players_games,
     join_by("athlete_display_name" == "Player")
