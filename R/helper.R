@@ -14,6 +14,10 @@ library(gtExtras)
 library(glue)
 
 
+if (!dir.exists("png")) dir.create("png")
+
+
+
 # Información del autor para el pie de gráfico
 twitter <- "<span style='color:#000000;font-family: \"Font Awesome 6 Brands\"'>&#xE61A;</span>"
 tweetelcheff <- "<span>*@elcheff*</span>"
