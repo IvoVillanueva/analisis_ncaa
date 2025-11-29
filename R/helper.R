@@ -7,36 +7,22 @@ library(httr)
 library(httr2)
 library(lubridate)
 library(jsonlite)
+library(rvest)
+library(curl)
+library(gt)
+library(gtExtras)
+library(glue)
 
-# Función para obtener el calendario de partidos desde la API de ESPN
-get_calendar <- function() {
-  
-  scoreboard_url <- "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard"
-  
-  # Hacemos la petición a la API
-  resp <- GET(scoreboard_url)
-  
-  # Verificamos status
-  if (status_code(resp) != 200) {
-    warning("Fallo al conectar con API de calendario ESPN")
-    return(character(0))
-  }
-  
-  data_raw <- content(resp)
-  
-  calendario <- pluck(data_raw, "leagues", 1, "calendar") %>% 
-    tibble(value = .) %>% 
-    unnest(cols = value) %>% 
-    mutate(
-      # Convertimos a fecha real para poder filtrar fácilmente después
-      date_obj = lubridate::ymd_hm(value, tz = "UTC") %>% as_date(),
-      # Guardamos el formato string que necesita download_day (YYYYMMDD)
-      date_str = format(date_obj, "%Y%m%d")
-    ) %>% 
-    # Filtramos solo hasta ayer (los partidos de hoy quizás no han terminado)
-    filter(date_obj < today()) %>% 
-    pull(date_str)
-  
-  return(calendario)
-}
+
+# Información del autor para el pie de gráfico
+twitter <- "<span style='color:#000000;font-family: \"Font Awesome 6 Brands\"'>&#xE61A;</span>"
+tweetelcheff <- "<span>*@elcheff*</span>"
+insta <- "<span style='color:#E1306C;font-family: \"Font Awesome 6 Brands\"'>&#xE055;</span>"
+instaelcheff <- "<span>*@sport_iv0*</span>"
+github <- "<span style='color:#000000;font-family: \"Font Awesome 6 Brands\"'>&#xF092;</span>"
+githubelcheff <- "<span>*IvoVillanueva*</span>"
+caption <- glue("**Datos**: *@ESPN* **Gráfico**: *Ivo Villanueva* • {twitter} {tweetelcheff} • {insta} {instaelcheff} • {github} {githubelcheff}")
+
+
+
 
