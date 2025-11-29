@@ -21,11 +21,6 @@ spain_df <- players_all %>%
     across(minutes:points, ~ round(mean(.x, na.rm = TRUE), 1)),
     .by = athlete_display_name
   ) %>%
-  left_join(
-    spain_players_games,
-    join_by("athlete_display_name" == "Player")
-  ) %>%
-  relocate(gm, .after = athlete_display_name) %>%
   arrange(desc(points)) %>%
   purrr::set_names(
     nm = c(
