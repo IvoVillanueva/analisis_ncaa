@@ -51,4 +51,4 @@ jobs:
       - name: Push changes
         run: git push
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NCAA_TOKEN: ${{ secrets.NCAA_TOKEN }}
