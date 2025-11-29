@@ -2,8 +2,6 @@ source("scripts/españoles.R")
 source("R/funciones.R")
 source("R/helper.R")
 
-if (!dir.exists("png")) dir.create("png")
-
 
 # Crear la tabla gt
 spain_df_final %>%
