@@ -1,10 +1,14 @@
-# --- DESCARGA Y CONSOLIDACIÓN DE DATOS (En Paralelo) ---
+# Este script contiene funciones para descargar y consolidar datos de partidos
+# de baloncesto universitario masculino desde una API pública de ESPN.
 
-
+# Cargamos las librerías necesarias
 library(tidyverse)
-library(jsonlite)
 library(httr)
+library(httr2)
+library(lubridate)
+library(jsonlite)
 
+# Función para obtener el calendario de partidos desde la API de ESPN
 get_calendar <- function() {
   
   scoreboard_url <- "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard"
