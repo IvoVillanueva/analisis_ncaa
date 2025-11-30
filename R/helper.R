@@ -27,6 +27,6 @@ github <- "<span style='color:#000000;font-family: \"Font Awesome 6 Brands\"'>&#
 githubelcheff <- "<span>*IvoVillanueva*</span>"
 caption <- glue("**Datos**: *@ESPN* **Gráfico**: *Ivo Villanueva* • {twitter} {tweetelcheff} • {insta} {instaelcheff} • {github} {githubelcheff}")
 
-<wa-icon name="square-x-twitter" family="brands"></wa-icon>
+
 
 
