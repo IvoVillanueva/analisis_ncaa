@@ -19,7 +19,7 @@ if (!dir.exists("png")) dir.create("png")
 
 
 # Información del autor para el pie de gráfico
-twitter <- "<span style='color:#000000; font-family: "Font Awesome 6 Brands";'>&#xE61B;</span>"
+twitter <- '<i class="fa-brands fa-twitter" style="color:#000000;" aria-hidden="true"></i>'
 tweetelcheff <- "<span>*@elcheff*</span>"
 insta <- "<span style='color:#E1306C;font-family: \"Font Awesome 6 Brands\"'>&#xE055;</span>"
 instaelcheff <- "<span>*@sport_iv0*</span>"
