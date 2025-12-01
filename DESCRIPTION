@@ -1,7 +1,7 @@
 Package: ncaa-esp
 Title: Datos y tablas de españoles en la NCAA
 Version: 0.1.0
-Authors@R: person("Ivo", "Villanueva", email = "tu_email@ejemplo.com", role = c("aut", "cre"))
+Authors@R: person("Ivo", "Villanueva", email = "villanueva_i1@hotmail.com", role = c("aut", "cre"))
 Description: Procesamiento y reporte de estadísticas de jugadores españoles en la NCAA. Contiene scripts para descargar datos, generar tablas gt y exportar gráficos.
 License: MIT
 Encoding: UTF-8
