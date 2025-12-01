@@ -29,4 +29,18 @@ caption <- glue("**Datos**: *@ESPN* **Gráfico**: *Ivo Villanueva* • {twitter}
 
 
 
+# Descargar la tabla de jugadores españoles en NCAA
+spain_players <-
+  read_csv(
+    "https://raw.githubusercontent.com/IvoVillanueva/NCAA-ANALISIS/refs/heads/main/data/spain_players.csv",
+    show_col_types = FALSE
+  ) %>%
+  mutate(Player = gsub("\\s+", " ", Player),
+         Player = ifelse( Player == "Ruben Dominguez", "Rubén Dominguez", Player
+         )
+  ) %>%
+  pull(Player)
+
+
+
 
